@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www,thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Search Page</h1>
+	<form th:action="@{/searchName}">
+		Equipment Name: <input type="text" name="name"/> <br/>
+		<input type="submit" value="Search By Equipment Name" />
+	</form><br>
+	<form th:action="@{/searchPrice}">
+		Price Min: <input type="text" name="pricemin"/> <br/>
+		Price Max: <input type="text" name="pricemax"/> <br/>
+		<input type="submit" value="Search By Price Range" />
+	</form><br>
+	<form th:action="@{/searchQuantity}">
+		Quantity Min: <input type="text" name="quantitymin"/> <br/>
+		Quantity Max: <input type="text" name="quantitymax"/> <br/>
+		<input type="submit" value="Search By Quantity Range" />
+	</form><br>
+	
+<a th:href="@{/}">Go Home</a>
+
+<h3>Equipment</h3>
+	<table border="1">
+		<tr>
+			<th>Name</th>
+			<th>Price</th>	
+			<th>Quantity</th>	
+		</tr>
+		
+		<tr th:each="e : ${equipment}">
+			<td th:text="${e.name}"></td>
+			<td th:text="${e.price}"></td>
+			<td th:text="${e.quantity}"></td>
+		</tr>
+		
+		</table>
+		<br>
+
+</body>
+</html>
